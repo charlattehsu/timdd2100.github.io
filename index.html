@@ -8,6 +8,8 @@
 
     <input type="button" value="送出" onclick="SendScore()">
     <script type="text/javascript">
+		console.log(getUrlParameter("name"))
+		console.log(getUrlParameter("amount"))
         function SendScore(){
             $.get("https://script.google.com/macros/s/AKfycbzCRViSXokcRIdNnhz_7XbCY0mSitljB_XZlCh9E-Ie1TRGa-4/exec", {
                         "name": document.getElementById("nameInput").value,
@@ -19,7 +21,15 @@
                         document.write("Result = "+data);
                         document.write("--------------------------");
                     });
-        }
+		}
+		
+		function getUrlParameter(name) {
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			var results = regex.exec(location.search);
+			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		}
+		
     </script>
 </body>
 </html>
