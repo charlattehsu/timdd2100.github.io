@@ -7,6 +7,9 @@
     Amount: <input type="text" id="amount"><br><br><br>
 
     <input type="button" value="送出" onclick="SendScore()">
+	
+	<input type="button" value="產生所有QRCode" onclick="GenerateQR()">
+	
     <script type="text/javascript">
 		getUrlParameter("name")
 		getUrlParameter("sex")
@@ -20,6 +23,15 @@
                     function (data) {
                         document.write("--------------------------");
                         document.write("Result = "+data);
+                        document.write("--------------------------");
+                    });
+		}
+		
+		function GenerateQR(){
+            $.get("https://script.google.com/macros/s/AKfycbyLnXGi0a41Ubjy5lCeBIuPMLpMw3Nc4sg9p-938bJ6BS9cJPM/exec",
+                    function (data) {
+                        document.write("--------------------------");
+                        document.write("Create QR List = "+data);
                         document.write("--------------------------");
                     });
 		}
