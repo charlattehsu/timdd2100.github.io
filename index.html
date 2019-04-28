@@ -2,19 +2,20 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    Name: <input type="text" id="nameInput"><br><br>
-    Sex: <input type="text" id="sexInput"><br><br>
-    Amount: <input type="text" id="amountInput"><br><br><br>
+    Name: <input type="text" id="name"><br><br>
+    Sex: <input type="text" id="sex"><br><br>
+    Amount: <input type="text" id="amount"><br><br><br>
 
     <input type="button" value="送出" onclick="SendScore()">
     <script type="text/javascript">
-		console.log(getUrlParameter("name"))
-		console.log(getUrlParameter("amount"))
+		getUrlParameter("name")
+		getUrlParameter("sex")
+		
         function SendScore(){
             $.get("https://script.google.com/macros/s/AKfycbzCRViSXokcRIdNnhz_7XbCY0mSitljB_XZlCh9E-Ie1TRGa-4/exec", {
-                        "name": document.getElementById("nameInput").value,
-                        "sex": document.getElementById("sexInput").value,
-                        "amount": document.getElementById("amountInput").value
+                        "name": document.getElementById("name").value,
+                        "sex": document.getElementById("sex").value,
+                        "amount": document.getElementById("amount").value
                     },
                     function (data) {
                         document.write("--------------------------");
@@ -27,7 +28,13 @@
 			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
 			var results = regex.exec(location.search);
-			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+			var temp = results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+			if(temp != '')
+			{
+				console.log('get value:'+temp)
+				document.getElementById(name).value = temp;
+				document.getElementById(name).disabled
+			}
 		}
 		
     </script>
