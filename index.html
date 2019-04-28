@@ -1,0 +1,25 @@
+<html>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    Name: <input type="text" id="nameInput"><br><br>
+    Sex: <input type="text" id="sexInput"><br><br>
+    Amount: <input type="text" id="amountInput"><br><br><br>
+
+    <input type="button" value="送出" onclick="SendScore()">
+    <script type="text/javascript">
+        function SendScore(){
+            $.get("https://script.google.com/macros/s/AKfycbzCRViSXokcRIdNnhz_7XbCY0mSitljB_XZlCh9E-Ie1TRGa-4/exec", {
+                        "name": document.getElementById("nameInput").value,
+                        "sex": document.getElementById("sexInput").value,
+                        "amount": document.getElementById("amountInput").value
+                    },
+                    function (data) {
+                        document.write("--------------------------");
+                        document.write("Result = "+data);
+                        document.write("--------------------------");
+                    });
+        }
+    </script>
+</body>
+</html>
