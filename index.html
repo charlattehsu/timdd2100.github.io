@@ -57,13 +57,12 @@
 <body>
 
     <div class="container-full">
-
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
         <div class="row text-center">
             <div class="col-lg-12" style="font-size:39pt;">    
                 <h1 id="title">Hello Guest</h1>
                 <p class="lead">Welcome Wedding</p>
                 
-
                 <form class="col-lg-12">
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
         
@@ -102,9 +101,6 @@
                             <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                                     <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" onclick="SendData()">GenerateQR All</button></span>
                              </div>
-
-                            <br>
-                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
                             <br>
                             <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                                     <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button" onclick="signOut()">Google Sign Out</button></span>
@@ -186,6 +182,7 @@
     <!-- JavaScript jQuery code  -->
 
     <script type='text/javascript'>
+        var emailStr = ""
 
         $(document).ready(function () {
             getUrlParameter("name")
@@ -194,10 +191,11 @@
 
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            emailStr = profile.getEmail()
         }
 
         function signOut() {
@@ -211,7 +209,8 @@
             jQuery.get("https://script.google.com/macros/s/AKfycbzCRViSXokcRIdNnhz_7XbCY0mSitljB_XZlCh9E-Ie1TRGa-4/exec", {
                 "name": document.getElementById("name").value,
                 "sex": document.getElementById("sex").value,
-                "amount": document.getElementById("amount").value
+                "amount": document.getElementById("amount").value,
+                "checkEmail": emailStr
             },
                 function (data) {
                     document.write("--------------------------");
