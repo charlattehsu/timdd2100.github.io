@@ -81,10 +81,31 @@
 
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
 
-                        <input type="text" id="sex" class="center-block form-control input-lg"
-                            placeholder="Enter your Sex">
+                        <input type="text" id="table" class="center-block form-control input-lg"
+                            placeholder="Enter your table">
                     </div>
+                    <br>
 
+                    <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
+
+                        <input type="text" id="cake" class="center-block form-control input-lg"
+                            placeholder="Enter your cake">
+                    </div>
+                    <br>
+
+                    <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
+
+                        <input type="text" id="people" class="center-block form-control input-lg"
+                            placeholder="Enter your people">
+                    </div>
+                    <br>
+
+                    <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
+
+                        <input type="text" id="baby" class="center-block form-control input-lg"
+                            placeholder="Enter your baby">
+                    </div>
+                    
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
 
@@ -229,7 +250,10 @@
         $(document).ready(function () {
             document.getElementById("adminbody").style.display = 'visable';
             getUrlParameter("name")
-            getUrlParameter("sex")
+            getUrlParameter("people")
+            //getUrlParameter("cake")
+            //getUrlParameter("baby")
+            //getUrlParameter("table")
         });
 
         function onSignIn(googleUser) {
@@ -252,7 +276,7 @@
         function SendData() {
             jQuery.get("https://script.google.com/macros/s/AKfycbzCRViSXokcRIdNnhz_7XbCY0mSitljB_XZlCh9E-Ie1TRGa-4/exec", {
                 "name": document.getElementById("name").value,
-                "sex": document.getElementById("sex").value,
+                "people": document.getElementById("people").value,
                 "amount": document.getElementById("amount").value,
                 "checkEmail": emailStr
             },
