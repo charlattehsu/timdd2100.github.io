@@ -88,12 +88,12 @@
                         <input type="text" id="table" class="center-block form-control input-lg"
                             placeholder="Enter your table">
                     </div>
+                    <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
 
                         <input type="text" id="cake" class="center-block form-control input-lg"
                             placeholder="Enter your cake">
                     </div>
-                    <br>
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
 
@@ -115,11 +115,11 @@
 
                         <br>
 
-                        <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+                        <!-- <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                             <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button"
                                     onclick="SendData()">GenerateQR All</button></span>
                         </div>
-                        <br>
+                        <br>-->
 
                     </form>
                 </form>
@@ -289,7 +289,7 @@
 
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#])');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
             var results = regex.exec(location.search);
             var temp = results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
             if (temp != '') {
