@@ -274,6 +274,8 @@
                 
           jQuery.get("https://script.google.com/macros/s/AKfycbz8RlR5TxAxaWWBjR8jRkdHdPZuaeQA84l72KdQmU8yHpZeMMTy/exec", {
                
+            }, {
+                "checkEmail": emailStr
             },
                 function (data) {
                     BootstrapDialog.alert(data);
@@ -313,8 +315,6 @@
                 document.getElementById(name).value = temp;
                 document.getElementById(name).disabled = true
             }
-            
-
         }
 
     </script>
