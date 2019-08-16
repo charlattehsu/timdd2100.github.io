@@ -72,37 +72,37 @@
 
                 <form class="col-lg-12">
                     <div class="input-group input-group-lg col-sm-4 col-sm-offset-4 col-xs-12">
-
+                        姓名
                         <input type="text" id="name" class="center-block form-control input-lg"
                             placeholder="Enter your name">
                     </div>
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
-
+                        金額
                         <input type="text" id="amount" class="center-block form-control input-lg"
                             placeholder="Enter your amount">
                     </div>
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
-
+                        桌次
                         <input type="text" id="table" class="center-block form-control input-lg"
                             placeholder="Enter your table">
                     </div>
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
-
+                        餅
                         <input type="text" id="cake" class="center-block form-control input-lg"
                             placeholder="Enter your cake">
                     </div>
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
-
+                        人數
                         <input type="text" id="people" class="center-block form-control input-lg"
                             placeholder="Enter your people">
                     </div>
                     <br>
                     <div class="input-group input-group-lg col-sm-offset-4 col-sm-4  col-xs-12">
-
+                        兒童椅
                         <input type="text" id="baby" class="center-block form-control input-lg"
                             placeholder="Enter your baby">
                     </div>
@@ -111,6 +111,10 @@
                         <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
                             <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button"
                                     onclick="SendData()">OK</button></span>
+                        </div>
+                        <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+                            <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button"
+                                    onclick="GetData()">取值</button></span>
                         </div>
 
                         <br>
@@ -245,7 +249,7 @@
             getUrlParameter("people")
             getUrlParameter("cake")
             getUrlParameter("baby")
-            getUrlParameter("table")
+            getUrlParameter("table")            
         });
 
         function onSignIn(googleUser) {
@@ -264,6 +268,18 @@
                 console.log('User signed out.');
             });
         }
+        
+        
+        function GetData() {
+                
+          jQuery.get("https://script.google.com/macros/s/AKfycbz8RlR5TxAxaWWBjR8jRkdHdPZuaeQA84l72KdQmU8yHpZeMMTy/exec", {
+               
+            },
+                function (data) {
+                    BootstrapDialog.alert(data);
+                });              
+       }             
+      
 
         function SendData() {
             jQuery.get("https://script.google.com/macros/s/AKfycbzCRViSXokcRIdNnhz_7XbCY0mSitljB_XZlCh9E-Ie1TRGa-4/exec", {
@@ -297,6 +313,8 @@
                 document.getElementById(name).value = temp;
                 document.getElementById(name).disabled = true
             }
+            
+
         }
 
     </script>
